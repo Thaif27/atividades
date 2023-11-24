@@ -1,0 +1,19 @@
+try {
+    var userInput = prompt("Digite um número:");
+
+    if (userInput === null) {
+        throw new Error("Operação cancelada pelo usuário.");
+    }
+
+    var numero = parseFloat(userInput);
+
+    if (isNaN(numero)) {
+        throw new Error("O valor informado não é um número válido.");
+    }
+
+    console.log("O número informado é: " + numero);
+} catch (erro) {
+    console.error("Erro: " + erro.message);
+} finally {
+    console.log("Esta parte sempre é executada, independentemente de ocorrer ou não uma exceção.");
+}
