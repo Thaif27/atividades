@@ -1,0 +1,33 @@
+// Função tradicional sem parâmetros
+function saudacaoPadrao() {
+    console.log("Olá! Bem-vindo ao assistente de boas-vindas.");
+}
+
+// Função tradicional com parâmetros e retorno de valor
+function saudacaoPersonalizada(nome) {
+    return "Olá, " + nome + "! Seja bem-vindo ao assistente personalizado.";
+}
+
+// Arrow function com parâmetros e retorno de valor
+const saudacaoComEmoji = (nome, emoji) => {
+    return `Olá, ${nome}! ${emoji} Bem-vindo ao assistente com emoji.`;
+};
+
+// Programa principal
+function programaPrincipal() {
+    // Saudação padrão
+    saudacaoPadrao();
+
+    // Saudação personalizada com retorno de valor
+    var nomeUsuario = prompt("Digite seu nome:");
+    var mensagemPersonalizada = saudacaoPersonalizada(nomeUsuario);
+    console.log(mensagemPersonalizada);
+
+    // Saudação com emoji usando arrow function
+    var emojiUsuario = prompt("Digite um emoji de sua escolha:");
+    var mensagemComEmoji = saudacaoComEmoji(nomeUsuario, emojiUsuario);
+    console.log(mensagemComEmoji);
+}
+
+// Executa o programa principal
+programaPrincipal();
