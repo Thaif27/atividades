@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco</title>
+
+    
+</head>
+<body>
+
+<div id="output">
+    <script>
+        // Objeto banco
+        var banco = {
+            conta: 123456,
+            saldo: 5000,
+            tipoConta: "Corrente",
+            agencia: "1234",
+
+            
+            buscarSaldo: function () {
+                return this.saldo;
+            },
+
+           
+            deposito: function (valor) {
+                this.saldo += valor;
+                return "Depósito de " + valor + " realizado. Novo saldo: " + this.saldo;
+            },
+
+          
+            saque: function (valor) {
+                if (this.saldo >= valor) {
+                    this.saldo -= valor;
+                    return "Saque de " + valor + " realizado. Novo saldo: " + this.saldo;
+                } else {
+                    return "Saldo insuficiente para o saque.";
+                }
+            },
+
+            
+            numeroDaConta: function () {
+                if (this.saldo > 5000) {
+                    return "Número da conta: " + this.conta + ", Dono da conta: Thaif Ramon";
+                } else {
+                    return "Número da conta: " + this.conta;
+                }
+            }
+        };
+
+        
+        function exibirMenu() {
+            var operacao = prompt(
+                "Escolha uma operação:\n1. Consultar Saldo\n2. Depositar\n3. Sacar\n4. Número da Conta\n0. Sair"
+            );
+
+            switch (operacao) {
+                case "1":
+                    alert(banco.buscarSaldo());
+                    exibirMenu();
+                    break;
+
+                case "2":
+                    var valorDeposito = parseFloat(prompt("Informe o valor para depósito:"));
+                    alert(banco.deposito(valorDeposito));
+                    exibirMenu();
+                    break;
+
+                case "3":
+                    var valorSaque = parseFloat(prompt("Informe o valor para saque:"));
+                    alert(banco.saque(valorSaque));
+                    exibirMenu();
+                    break;
+
+                case "4":
+                    alert(banco.numeroDaConta());
+                    exibirMenu();
+                    break;
+
+                case "0":
+                    alert("Obrigado por utilizar nossos serviços.");
+                    break;
+
+                default:
+                    alert("Operação inválida.");
+                    exibirMenu();
+            }
+        }
+
+       
+        exibirMenu();
+    </script>
+    <button onclick="exibirMenu()">Voltar para o Menu</button>
+</div>
+
+</body>
+</html>
