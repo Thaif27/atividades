@@ -1,0 +1,127 @@
+Objetos Materiais:
+Carro:
+
+Atributos:
+Marca
+Modelo
+Ano
+Métodos:
+LigareDesligar
+Acelerar
+Frear
+Livro:
+
+Atributos:
+Título
+Autor
+Ano de publicação
+Métodos:
+Abrir
+Fechar
+Ler
+Objetos Abstratos:
+Conta Bancária:
+
+Atributos:
+Número da conta
+Saldo
+Titular
+Métodos:
+Depositar
+Sacar
+ConsultarSaldo
+Forma Geométrica:
+
+Atributos:
+Tipo (por ex, quadrado, círculo)
+Área
+Perímetro
+Métodos:
+CalcularÁrea
+CalcularPerímetro
+Desenhar
+
+
+const carro = {
+  marca: "Toyota",
+  modelo: "Corolla",
+  ano: 2022,
+  ligarDesligar: function() {
+    console.log("O carro foi ligado/desligado.");
+  },
+  acelerar: function() {
+    console.log("O carro está acelerando.");
+  },
+  frear: function() {
+    console.log("O carro está freando.");
+  }
+};
+
+const livro = {
+  titulo: "Dom Casmurro",
+  autor: "Machado de Assis",
+  anoPublicacao: 1899,
+  abrir: function() {
+    console.log("O livro foi aberto.");
+  },
+  fechar: function() {
+    console.log("O livro foi fechado.");
+  },
+  ler: function() {
+    console.log("Alguém está lendo o livro.");
+  }
+};
+
+
+function ContaBancaria(numero, saldo, titular) {
+  this.numeroConta = numero;
+  this.saldo = saldo;
+  this.titular = titular;
+}
+
+ContaBancaria.prototype.depositar = function(valor) {
+  this.saldo += valor;
+  console.log(`Depósito de ${valor} realizado. Novo saldo: ${this.saldo}`);
+};
+
+ContaBancaria.prototype.sacar = function(valor) {
+  if (valor <= this.saldo) {
+    this.saldo -= valor;
+    console.log(`Saque de ${valor} realizado. Novo saldo: ${this.saldo}`);
+  } else {
+    console.log("Saldo insuficiente.");
+  }
+};
+
+ContaBancaria.prototype.consultarSaldo = function() {
+  console.log(`Saldo atual: ${this.saldo}`);
+};
+
+const formaGeometrica = {
+  tipo: "Círculo",
+  area: 25,
+  perimetro: 20,
+  calcularArea: function() {
+    console.log(`Área do ${this.tipo}: ${this.area}`);
+  },
+  calcularPerimetro: function() {
+    console.log(`Perímetro do ${this.tipo}: ${this.perimetro}`);
+  },
+  desenhar: function() {
+    console.log(`Desenhando um ${this.tipo}.`);
+  }
+};
+
+
+carro.ligarDesligar();
+livro.ler();
+
+const conta1 = new ContaBancaria(12345, 1000, "João");
+conta1.depositar(500);
+conta1.sacar(200);
+conta1.consultarSaldo();
+
+formaGeometrica.calcularArea();
+formaGeometrica.desenhar();
+
+
